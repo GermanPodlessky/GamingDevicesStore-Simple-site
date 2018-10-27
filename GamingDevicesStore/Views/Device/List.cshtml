@@ -1,0 +1,16 @@
+﻿@using GamingDevicesStore.Models
+@{
+    ViewBag.Title = "Товары";
+}
+
+<div class="container-fluid">
+    @foreach (var b in ViewBag.Devices)
+    {
+        <h3>@b.Type @b.Brand @b.Model</h3>
+        <p>@b.Description</p>
+        <h4>@b.Price.ToString("# руб")</h4>
+    }
+    <div class="container">
+        @ViewBag.Result
+    </div>
+</div>

@@ -16,6 +16,31 @@
     white-space: normal;
 }
 
+.navbar {
+    background-color: lightgrey;
+
+}
+
+.navbar-toggle {
+    background: white;
+}
+
+.icon-bar {
+    background: grey;
+}
+
+.navbar-brand {
+    font-size: 25px;
+    font-family: "Times New Roman",Georgia, Serif;
+    color: red;
+    letter-spacing: .3em;
+    text-shadow: 1px 1px white;
+}
+
+a,.navbar-brand:hover  {
+    color: orange;
+}
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
