@@ -49,12 +49,12 @@ namespace GamingDevicesStore.Models
                 new Device
                 {
                     Id = 4, Type = "Гарнитура", Brand = "Cougar", Model = "MEGARA",
-                    Category = "Наушники", Price = 69, Description ="Легкая компактная игровая гарнитура Cougar MEGARA обеспечит детализированное звучание и превосходную шумоизоляцию."
+                    Category = "О", Price = 69, Description ="Легкая компактная игровая гарнитура Cougar MEGARA обеспечит детализированное звучание и превосходную шумоизоляцию."
                 },
                 new Device
                 {
                     Id = 5, Type = "Гарнитура", Brand = "Razer", Model = "Hammerhead Pro V2",
-                    Category = "Наушники", Price = 179, Description ="Внешний вид гарнитуры Razer Hammerhead Pro заметно изменился, но прочность остается неизменной. Новый дизайн и плоские кабели порадуют поклонников мобильных игр."
+                    Category = "О", Price = 179, Description ="Внешний вид гарнитуры Razer Hammerhead Pro заметно изменился, но прочность остается неизменной. Новый дизайн и плоские кабели порадуют поклонников мобильных игр."
                 }
             });
             base.Seed(db);

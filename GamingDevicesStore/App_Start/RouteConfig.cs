@@ -13,17 +13,38 @@ namespace GamingDevicesStore
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+            routes.MapRoute(null,
+                "",
+                new
+                {
+                    controller = "Device",
+                    action = "List",
+                    category = (string)null,
+                    page = 1
+                }
+            );
+
             routes.MapRoute(
                 name: null,
-                url:"Page{page}",
-                defaults: new {controller = "Device", action = "List"}
-                );
-            
-            routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Device", action = "List", id = UrlParameter.Optional }
+                url: "Page{page}",
+                defaults: new { controller = "Device", action = "List", category = (string)null },
+                constraints: new { page = @"\d+" }
             );
+
+            routes.MapRoute(null,
+                "{category}",
+                new { controller = "Device", action = "List", page = 1 }
+            );
+
+            routes.MapRoute(null,
+                "{category}/Page{page}",
+                new { controller = "Device", action = "List" },
+                new { page = @"\d+" }
+            );
+
+            routes.MapRoute(null, "{controller}/{action}");
+
+
         }
     }
 }

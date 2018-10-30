@@ -16,26 +16,32 @@ namespace GamingDevicesStore.Controllers
     public class DeviceController : Controller
     {
         private DeviceContext db = new DeviceContext();
-        private IDeviceRepository repository;
-        public int pageSize = 3;
+        public int pageSize = 1;
 
-        public ViewResult List(int page = 1)
+        public ViewResult List(string category, int page = 1)
         {
             HtmlHelper myHelper = null;
+
+            ViewBag.Devices = db.Devices.Where(p => category == null || p.Category == category)
+                .OrderBy(d => d.Id).Skip((page - 1) * pageSize)
+                .Take(pageSize);
 
             PagingInfo pagingInfo = new PagingInfo
             {
                 CurrentPage = page,
-                TotalItems = db.Devices.Count(),
+                TotalItems = category == null?
+                    db.Devices.Count() : 
+                    db.Devices.Where(d => d.Category == category).Count(),
                 ItemsPerPage = pageSize
             };
 
-            Func<int, string> pageUrlDelegate = i => "Page" + i;
+            Func<int, string> pageUrlDelegate = i => category == null ? "Page" + i :
+                $"/{category}/Page{i}";
             MvcHtmlString result = myHelper.PageLinks(pagingInfo, pageUrlDelegate);
-            
-            ViewBag.Devices =  db.Devices.OrderBy(d => d.Id).Skip((page - 1) * pageSize)
-                .Take(pageSize);
+
+            ViewBag.PagingInfo = pagingInfo;
             ViewBag.Result = result;
+            ViewBag.Category = category;
             return View();
         } 
     } 
