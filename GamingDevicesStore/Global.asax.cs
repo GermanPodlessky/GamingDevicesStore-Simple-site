@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using GamingDevicesStore.Infrastructure.Binders;
 using GamingDevicesStore.Models;
 
 namespace GamingDevicesStore
@@ -19,6 +20,7 @@ namespace GamingDevicesStore
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ModelBinders.Binders.Add(typeof(Cart),new CartModelBinder());
         }
     }
 }

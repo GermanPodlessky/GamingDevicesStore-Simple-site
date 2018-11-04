@@ -20,24 +20,16 @@
             <a class="navbar-brand" href="#">GameingDeviceStore - магазин игровых устройств</a>
         </div>
         <div class="navbar-collapse collapse">
-            <form class="navbar-form navbar-right">
-                <div class="form-group">
-                    <input type="text" placeholder="Login" class="form-control">
-                </div>
-                <div class="form-group">
-                    <input type="password" placeholder="password" class="form-control">
-                </div>
-                <button type="submit" class="btn btn-success">Sing in</button>
-            </form>
+            @Html.Action("Summary","Cart")
         </div>
     </div>
 </div>
 <br/>
 <div class="row panel">
-    <div id="categories" class="col-xs-3">
+    <div id="categories" class="col-xs-2">
         @Html.Action("Menu","Nav")
     </div>
-    <div class="container body-content col-xs-8">
+    <div class="container body-content col-xs-9">
         @RenderBody()
     </div>
 </div>

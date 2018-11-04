@@ -16,7 +16,7 @@ namespace GamingDevicesStore.Controllers
     public class DeviceController : Controller
     {
         private DeviceContext db = new DeviceContext();
-        public int pageSize = 1;
+        public int pageSize = 10;
 
         public ViewResult List(string category, int page = 1)
         {
