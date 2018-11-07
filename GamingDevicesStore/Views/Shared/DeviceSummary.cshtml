@@ -9,8 +9,8 @@
     {
         <div class="pull-right">
             @Html.HiddenFor(i => i.Id)
-            @Html.Hidden("returnUrl",Request.Url.PathAndQuery)
-            <input type="submit" class="btn btn-success" value="Добавить в корзину"/>
+            @Html.Hidden("returnUrl", Request.Url.PathAndQuery)
+            <input type="submit" class="btn btn-success" value="Добавить в корзину" />
         </div>
     }
     <span class="lead">@Model.Description</span>

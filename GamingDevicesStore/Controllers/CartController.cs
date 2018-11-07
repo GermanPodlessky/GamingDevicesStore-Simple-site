@@ -4,13 +4,14 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using GamingDevicesStore.Models;
+using GamingDevicesStore.Models.Concrete;
 
 namespace GamingDevicesStore.Controllers
 {
     public class CartController : Controller
     {
         private DeviceContext db = new DeviceContext();
-
+        private EmailOrderProcessor emailOrder = new EmailOrderProcessor(new EmailSettings());
         public ViewResult Index(Cart cart,string returnUrl)
         {
             return View(new CartIndexViewModel()
@@ -47,6 +48,28 @@ namespace GamingDevicesStore.Controllers
         public PartialViewResult Summary(Cart cart)
         {
             return PartialView(cart);
+        }
+
+        public ViewResult Checkout()
+        {
+            return View(new ShippingDetails());
+        }
+
+        [HttpPost]
+        public ViewResult Checkout(Cart cart, ShippingDetails shippingDetails)
+        {
+            if (cart.Lines.Count() == 0)
+            {
+                ModelState.AddModelError("", "Заказ не может быть обработан, ваша корзина пуста!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                emailOrder.ProcessOrder(cart, shippingDetails);
+                cart.Clear();
+                return View("Completed");
+            }
+            else return View("Checkout",new ShippingDetails());
         }
     }
 }
