@@ -16,9 +16,8 @@
     white-space: normal;
 }
 
-.navbar {
+.navbar{
     background-color: whitesmoke;
-
 }
 
 .navbar-toggle {
@@ -41,9 +40,31 @@ a,.navbar-brand:hover  {
     color: blue;
 }
 
+@media (max-width: 768px) {
+    .navbar {
+        height: 75px;
+        background-color: whitesmoke;
+    }
+    #iconCart {
+        margin-top: 20px
+    }
+    #iconCart {
+        margin-top: 20px
+    }
+    #textDevices {
+        margin-top: 35px
+    }
+}
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.navbar-right {
+    float: right !important;
+    margin-right: 15px;
+    margin-left: 15px;
 }

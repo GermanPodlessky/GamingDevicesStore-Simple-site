@@ -66,6 +66,7 @@ namespace GamingDevicesStore.Models.Concrete
                     .AppendLine("Доставка:")
                     .AppendLine("Фамилия - " + shippingInfo.SecondName)
                     .AppendLine("Имя - "+ shippingInfo.SecondName)
+                    .AppendLine("Номер- "+ shippingInfo.Number)
                     .AppendLine("Адрес - " + shippingInfo.Line1)
                     .AppendLine(shippingInfo.Line2 ?? "")
                     .AppendLine("Город " + shippingInfo.City)

@@ -16,7 +16,7 @@ namespace GamingDevicesStore.Controllers
     public class DeviceController : Controller
     {
         private DeviceContext db = new DeviceContext();
-        public int pageSize = 10;
+        public int pageSize = 3;
 
         public ViewResult List(string category, int page = 1)
         {
@@ -30,7 +30,7 @@ namespace GamingDevicesStore.Controllers
             {
                 CurrentPage = page,
                 TotalItems = category == null?
-                    db.Devices.Count() : 
+                db.Devices.Count() : 
                     db.Devices.Where(d => d.Category == category).Count(),
                 ItemsPerPage = pageSize
             };

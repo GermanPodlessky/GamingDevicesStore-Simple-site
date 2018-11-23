@@ -25,8 +25,8 @@ namespace GamingDevicesStore
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/bootstrap-theme.min.css",
-                      "~/Content/Site.css",
-                      "~/Content/ErrorStyles.css"));
+                      "~/Content/ErrorStyles.css",
+                      "~/Content/Site.css"));
         }
     }
 }

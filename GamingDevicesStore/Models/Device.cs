@@ -38,7 +38,7 @@ namespace GamingDevicesStore.Models
                 new Device
                 {
                     Id = 2, Type = "Гарнитура", Brand = "Razer", Model = "Thresher Tournament",
-                    Category = "Наушники", Price = 245, Description ="Гарнитура Razer Thresher Tournament Edition обеспечивает абсолютный комфорт во время многочасовых игр на консоли и ПК."
+                    Category = "Клавиатуры", Price = 245, Description ="Гарнитура Razer Thresher Tournament Edition обеспечивает абсолютный комфорт во время многочасовых игр на консоли и ПК."
                 },
                 new Device
                 {
