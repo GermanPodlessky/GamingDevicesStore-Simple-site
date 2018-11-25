@@ -7,6 +7,7 @@ using GamingDevicesStore.Models;
 
 namespace GamingDevicesStore.Controllers
 {
+    [Authorize]
     public class AdminController : Controller
     {
         private DeviceContext db = new DeviceContext();
