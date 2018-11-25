@@ -1,0 +1,46 @@
+﻿@model GamingDevicesStore.Models.Device
+
+@{
+    ViewBag.Title = "Админ панель: редактирование товара";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+
+}
+
+<div class="panel">
+    <div class="panel-heading">z
+        <h2>Редактирование устройства "@Model.Model @Model.Brand"</h2>
+    </div>
+    @using (Html.BeginForm())
+    {
+        <div class="panel-body">
+            @Html.HiddenFor(i => i.Id)
+            @foreach(var prop in ViewData.ModelMetadata.Properties)
+            {
+                if (prop.PropertyName != "Id")
+                {
+                    <div class="form-group">
+                        <label>@(prop.DisplayName ?? prop.PropertyName)</label>
+                        @if (prop.PropertyName == "Description")
+                        {
+                            @Html.TextArea(prop.PropertyName,null,
+                                new{@class="form-control",rows = 5})
+                        }
+                        else
+                        {
+                            @Html.TextBox(prop.PropertyName,null,
+                                new {@class="form-control"})
+                        }
+                        @Html.ValidationMessage(prop.PropertyName)
+                    </div>
+                }
+            }
+        </div>
+        <div class="panel-footer">
+            <input class="btn btn-primary" type="submit" value="Сохранить"/>
+            @Html.ActionLink("Отмена изменений и возврат к списку","Index",null, new
+            {
+                @class = "btn btn-default"
+            })
+        </div>
+    }
+</div>

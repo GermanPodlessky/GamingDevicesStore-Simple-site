@@ -153,6 +153,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CartController.cs" />
     <Compile Include="Controllers\DeviceController.cs" />
     <Compile Include="Controllers\NavController.cs" />
@@ -219,6 +220,9 @@
     <Content Include="Views\Shared\_Layout.Mobile.cshtml" />
     <Content Include="Views\Nav\MenuMobile.cshtml" />
     <Content Include="Views\Shared\DeviceSummaryMobile.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

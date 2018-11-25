@@ -1,19 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace GamingDevicesStore.Models
 {
     public class Device
-    {
+    {   
+        [HiddenInput(DisplayValue = false)]
         public int Id { get; set; }
-        public string Type { get; set; } 
+
+        [Display(Name = "Тип")]
+        [Required(ErrorMessage = "Пожалуйста, введите тип устройства")]
+        public string Type { get; set; }
+
+        [Display(Name = "Модель")]
+        [Required(ErrorMessage = "Пожалуйста, введите модель устройства")]
         public string Model { get; set; }
+
+        [Display(Name = "Бренд")]
+        [Required(ErrorMessage = "Пожалуйста, введите бренд устройства")]
         public string Brand { get; set; }
+
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Описание")]
+        [Required(ErrorMessage = "Пожалуйста, введите описание для устройства")]
         public string Description { get; set; }
+
+        [Display(Name = "Категория")]
+        [Required(ErrorMessage = "Пожалуйста, укажите категорию для устройства")]
         public string Category { get; set; }
+
+        [Display(Name = "Цена (руб)")]
+        [Required]
+        [Range(0.01, double.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение для цены")]
         public decimal Price { get; set; }
     }
 
