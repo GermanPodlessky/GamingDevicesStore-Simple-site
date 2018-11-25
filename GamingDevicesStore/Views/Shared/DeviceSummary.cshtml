@@ -1,6 +1,14 @@
 ﻿@model GamingDevicesStore.Models.Device
 
 <div class="well">
+    @if (Model.ImageData != null)
+    {
+        <div class="pull-left" style="margin-right: 10px">
+            <img class="img-thumbnail" width="75" height="75"
+                 src="@Url.Action("GetImage", "Device",
+                          new { Model.Id })" />
+        </div>
+    }
     <h3>
         <strong>@Model.Type @Model.Brand @Model.Model</strong>
         <span class="pull-right label label-info">@Model.Price.ToString("# руб")</span>

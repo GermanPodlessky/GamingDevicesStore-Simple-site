@@ -16,24 +16,54 @@
             @Html.HiddenFor(i => i.Id)
             @foreach(var prop in ViewData.ModelMetadata.Properties)
             {
-                if (prop.PropertyName != "Id")
+                switch (prop.PropertyName)
                 {
-                    <div class="form-group">
-                        <label>@(prop.DisplayName ?? prop.PropertyName)</label>
-                        @if (prop.PropertyName == "Description")
-                        {
-                            @Html.TextArea(prop.PropertyName,null,
-                                new{@class="form-control",rows = 5})
-                        }
-                        else
-                        {
-                            @Html.TextBox(prop.PropertyName,null,
-                                new {@class="form-control"})
-                        }
-                        @Html.ValidationMessage(prop.PropertyName)
-                    </div>
+                    case "Id":
+                    case "ImageData":
+                    case "ImageMimeType":
+                        break;
+                    default:
+                        <div class="form-group">
+                            <label>@(prop.DisplayName ?? prop.PropertyName)</label>
+                            @if (prop.PropertyName == "Description")
+                            {
+                                @Html.TextArea(prop.PropertyName, null,
+                                    new {@class = "form-control", rows = 5})
+                            }
+                            else
+                            {
+                                @Html.TextBox(prop.PropertyName, null,
+                                    new {@class = "form-control"})
+                            }
+                            @Html.ValidationMessage(prop.PropertyName)
+                        </div>
+                        break;
                 }
-            }
+             }
+            <div class="form-group">
+                <div style="position:relative;">
+                    <label>Картинка</label>
+                    <a class='btn' href='javascript:;'>
+                        Выберите файл...
+                        <input type="file" name="Image" size="40"
+                               style="position:absolute;z-index:2;top:0;
+                               left:0;filter: alpha(opacity=0); opacity:0;
+                               background-color:transparent;color:transparent;"
+                               onchange='$("#upload-file-info").html($(this).val());'>
+                    </a>
+                    <span class='label label-info' id="upload-file-info"></span>
+                </div>
+                @if (Model.ImageData == null)
+                {
+                    <div class="form-control-static">Нет картинки</div>
+                }
+                else
+                {
+                    <img class="img-thumbnail" width="150" height="150"
+                         src="@Url.Action("GetImage", "Device",
+                                  new { Model.Id })" />
+                }
+            </div>
         </div>
         <div class="panel-footer">
             <input class="btn btn-primary" type="submit" value="Сохранить"/>

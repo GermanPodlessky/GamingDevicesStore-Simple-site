@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using GamingDevicesStore.Models;
 
 namespace GamingDevicesStore.Models
 {
@@ -38,7 +39,12 @@ namespace GamingDevicesStore.Models
         [Required]
         [Range(0.01, double.MaxValue, ErrorMessage = "Пожалуйста, введите положительное значение для цены")]
         public decimal Price { get; set; }
+
+        public byte[] ImageData { get; set; }
+        public string ImageMimeType { get; set; }
     }
+
+    
 
     public class DeviceContext : DbContext
     {

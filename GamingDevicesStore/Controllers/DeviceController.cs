@@ -43,6 +43,21 @@ namespace GamingDevicesStore.Controllers
             ViewBag.Result = result;
             ViewBag.Category = category;
             return View();
-        } 
+        }
+
+        public FileContentResult GetImage(int id)
+        {
+            Device device = db.Devices
+                .FirstOrDefault(g => g.Id == id);
+
+            if (device != null)
+            {
+                return File(device.ImageData, device.ImageMimeType);
+            }
+            else
+            {
+                return null;
+            }
+        }
     } 
 }

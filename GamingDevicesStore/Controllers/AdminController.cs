@@ -26,10 +26,16 @@ namespace GamingDevicesStore.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Device device)
+        public ActionResult Edit(Device device, HttpPostedFileBase image = null)
         {
             if (ModelState.IsValid)
             {
+                if (image != null)
+                {
+                    device.ImageMimeType = image.ContentType;
+                    device.ImageData = new byte[image.ContentLength];
+                    image.InputStream.Read(device.ImageData, 0, image.ContentLength);
+                }
                 SaveDevice(device);
                 TempData["message"] =
                     string.Format($"Изменения в устройстве \"{device.Model} {device.Brand}\" были сохранены");
@@ -58,6 +64,8 @@ namespace GamingDevicesStore.Controllers
                     dbDevice.Description = device.Description;
                     dbDevice.Price = device.Price;
                     dbDevice.Category = device.Category;
+                    dbDevice.ImageData = device.ImageData;
+                    dbDevice.ImageMimeType = device.ImageMimeType;
                 }
             }
             db.SaveChanges();
