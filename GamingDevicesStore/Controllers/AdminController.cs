@@ -61,5 +61,33 @@ namespace GamingDevicesStore.Controllers
             }
             db.SaveChanges();
         }
+
+        public ViewResult Create()
+        {
+            return View("Edit",new Device());
+        }
+
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            Device deletedDevice = DeleteDevice(id);
+            if (deletedDevice != null)
+                TempData["message"] =
+                    string.Format($"Устройство \"{deletedDevice.Model} {deletedDevice.Brand}\" было удалено");
+
+            return RedirectToAction("Index");
+        }
+
+        private Device DeleteDevice(int id)
+        {
+            Device dbDevice = db.Devices.Find(id);
+            if (dbDevice != null)
+            {
+                db.Devices.Remove(dbDevice);
+                db.SaveChanges();
+            }
+
+            return dbDevice;
+        }
     }
 }

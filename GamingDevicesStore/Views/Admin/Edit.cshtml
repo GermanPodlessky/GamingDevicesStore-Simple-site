@@ -7,10 +7,10 @@
 }
 
 <div class="panel">
-    <div class="panel-heading">z
+    <div class="panel-heading">
         <h2>Редактирование устройства "@Model.Model @Model.Brand"</h2>
     </div>
-    @using (Html.BeginForm())
+    @using (Html.BeginForm("Edit","Admin"))
     {
         <div class="panel-body">
             @Html.HiddenFor(i => i.Id)
